@@ -1,3 +1,10 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Juego/Jugador/Jugador.tscn" type="PackedScene" id=1]
 
 [node name="NivelTest" type="Node"]
+
+[node name="Jugador" parent="." instance=ExtResource( 1 )]
+position = Vector2( 361, 227 )
+gravity_scale = 0.0
+can_sleep = false
