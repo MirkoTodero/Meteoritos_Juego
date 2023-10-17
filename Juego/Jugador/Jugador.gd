@@ -9,6 +9,7 @@ var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
 
 onready var canion:Canion = $Canion
+onready var laser:RayoLaser = $LaserBeam2D
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	rad2deg(rotation)
@@ -40,3 +41,9 @@ func player_input() -> void:
 
 func _process(delta: float) -> void:
 	player_input()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("disparo_laser"):
+		laser.set_is_casting(true)
+	if event.is_action_released("disparo_laser"):
+		laser.set_is_casting(false)

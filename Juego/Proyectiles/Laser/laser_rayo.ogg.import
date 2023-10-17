@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/laser_rayo.ogg-65a7e93fe2cad99a937cfa65efbba8c8.oggstr"
+
+[deps]
+
+source_file="res://Juego/Proyectiles/Laser/laser_rayo.ogg"
+dest_files=[ "res://.import/laser_rayo.ogg-65a7e93fe2cad99a937cfa65efbba8c8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
