@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/motor_jugadorSFX.ogg-09c84a538a8eb560909293fa5c90344c.oggstr"
+
+[deps]
+
+source_file="res://Juego/Jugador/motor_jugadorSFX.ogg"
+dest_files=[ "res://.import/motor_jugadorSFX.ogg-09c84a538a8eb560909293fa5c90344c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
