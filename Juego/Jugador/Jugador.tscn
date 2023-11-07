@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://TemporalAssets/kenney_space-shooter-redux/PNG/playerShip_orange.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Jugador/Jugador.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Juego/Jugador/Estela/Trail2D.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Jugador/Motor/MotorSFX.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Jugador/recibir_daño.wav" type="AudioStream" id=8]
+[ext_resource path="res://Juego/Jugador/Escudo/Escudo.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.0
@@ -99,6 +100,8 @@ anims/spawn = SubResource( 5 )
 [node name="ImpactoDanio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 bus = "SFX"
+
+[node name="Escudo" parent="." instance=ExtResource( 9 )]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
