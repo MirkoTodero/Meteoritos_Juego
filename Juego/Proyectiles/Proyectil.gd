@@ -1,11 +1,17 @@
 extends Area2D
 class_name Proyectil
 
-var danio:float
+var danio:float = 1.0
 var velocidad:Vector2 = Vector2.ZERO
 
 func _ready():
 	pass 
+
+func daniar(otro_cuerpo: CollisionObject2D) ->void:
+	if otro_cuerpo.has_method("recibir_danio"):
+		otro_cuerpo.recibir_danio(danio)
+		
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	position += velocidad * delta
@@ -17,3 +23,9 @@ func crear(pos: Vector2, dir: float, vel: float, danio_p: int) -> void:
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	daniar(area)
+
+func _on_body_entered(body: Node) -> void:
+	daniar(body)
