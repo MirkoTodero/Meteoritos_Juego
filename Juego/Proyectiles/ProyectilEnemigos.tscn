@@ -12,7 +12,7 @@ z_index = 41
 collision_layer = 16
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 0, 1, 0.132813, 1 )
+modulate = Color( 2, 0, 2.31, 1 )
 scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
