@@ -51,7 +51,7 @@ func player_input() -> void:
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	player_input()
 
 func _unhandled_input(event: InputEvent) -> void:
