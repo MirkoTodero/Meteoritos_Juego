@@ -4,8 +4,8 @@ class_name Escudo
 
 var esta_activado:bool = false setget ,get_esta_activado
 
-export var energia:float = 8.0
-export var radio_desgaste:float = -1.6
+export var energia:float = 15.0
+export var radio_desgaste:float = -2.0
 
 func _process(delta: float) -> void:
 	energia += radio_desgaste * delta
