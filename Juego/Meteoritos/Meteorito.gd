@@ -12,6 +12,7 @@ var hitpoints:float
 var esta_en_sector:bool = true setget set_esta_en_sector
 var pos_spawn_original:Vector2
 var vel_spawn_original:Vector2
+var esta_destruido:bool = false
 
 func _ready()-> void:
 	angular_velocity = vel_ang_base
@@ -42,10 +43,11 @@ func crear(pos: Vector2, dir: Vector2, tamanio:float) -> void:
 	print("hitpoints", hitpoints)
 
 func recibir_danio(danio:float) -> void:
-	$AnimationPlayer.play("impacto")
 	hitpoints -= danio
-	if hitpoints <= 0:
+	if hitpoints <= 0 and not esta_destruido:
+		esta_destruido = true
 		destruir()
+	animacion_impacto.play("impacto")
 
 func destruir() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
