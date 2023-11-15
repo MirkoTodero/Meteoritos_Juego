@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/entrando_zonaDanger.ogg-e2e2d35d3b64277c0727cc190c6e3da1.oggstr"
+
+[deps]
+
+source_file="res://Juego/Meteoritos/entrando_zonaDanger.ogg"
+dest_files=[ "res://.import/entrando_zonaDanger.ogg-e2e2d35d3b64277c0727cc190c6e3da1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

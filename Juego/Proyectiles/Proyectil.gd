@@ -1,7 +1,7 @@
 extends Area2D
 class_name Proyectil
 
-var danio:float = 1.0
+var danio:float = 2.0
 var velocidad:Vector2 = Vector2.ZERO
 
 func _ready():
