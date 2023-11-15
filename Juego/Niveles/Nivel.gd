@@ -8,6 +8,7 @@ onready var contenedor_proyectiles:Node
 onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
+onready var camara_jugador:Camera2D = $Jugador/CamaraJugador
 
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
@@ -71,10 +72,10 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void
 	new_sector_meteoritos.crear(centro_camara, numero_peligros)
 	camara_nivel.global_position = centro_camara
 	contenedor_sector_meteoritos.add_child(new_sector_meteoritos)
-	camara_nivel.zoom = $Jugador/CamaraJugador.zoom
+	camara_nivel.zoom = camara_jugador.zoom
 	camara_nivel.devolver_zoom_original()
 	transicion_camaras(
-		$Jugador/CamaraJugador.global_position,
+		camara_jugador.global_position,
 		camara_nivel.global_position,
 		camara_nivel,
 		tiempo_transicion_camara
@@ -103,14 +104,14 @@ func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -= 1
 	if meteoritos_totales == 0:
 		contenedor_sector_meteoritos.get_child(0).queue_free()
-		$Jugador/CamaraJugador.set_puede_hacer_zoom(true)
-		var zoom_actual = $Jugador/CamaraJugador.zoom
-		$Jugador/CamaraJugador.zoom = camara_nivel.zoom
-		$Jugador/CamaraJugador.zoom_suavizado(zoom_actual.x, zoom_actual.y, 1.0)
+		camara_jugador.set_puede_hacer_zoom(true)
+		var zoom_actual = camara_jugador.zoom
+		camara_jugador.zoom = camara_nivel.zoom
+		camara_jugador.zoom_suavizado(zoom_actual.x, zoom_actual.y, 1.0)
 		transicion_camaras(
 			camara_nivel.global_position,
-			$Jugador/CamaraJugador.global_position,
-			$Jugador/CamaraJugador,
+			camara_jugador.global_position,
+			camara_jugador,
 			tiempo_transicion_camara * 0.10
 		)
 
