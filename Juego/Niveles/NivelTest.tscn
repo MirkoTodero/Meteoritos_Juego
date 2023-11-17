@@ -19,10 +19,17 @@ meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 5 )
 
-[node name="Fondito" type="Sprite" parent="."]
-position = Vector2( 937.5, 565 )
-scale = Vector2( 8.66016, 5.57813 )
-texture = ExtResource( 9 )
+[node name="TriggersLluviaMeteorito" type="Node" parent="."]
+
+[node name="SectorDePeligro" parent="TriggersLluviaMeteorito" instance=ExtResource( 7 )]
+position = Vector2( 972, 502 )
+tipo_peligro = "Meteorito"
+numero_peligros = 3
+
+[node name="ContenedorEstaciones" type="Node" parent="."]
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
+position = Vector2( 2144, 373 )
 
 [node name="Jugador" parent="." instance=ExtResource( 1 )]
 position = Vector2( 212, 259 )
@@ -31,13 +38,6 @@ gravity_scale = 0.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
-[node name="TriggersLluviaMeteorito" type="Node" parent="."]
-
-[node name="SectorDePeligro" parent="TriggersLluviaMeteorito" instance=ExtResource( 7 )]
-position = Vector2( 972, 502 )
-tipo_peligro = "Meteorito"
-numero_peligros = 3
-
 [node name="CamaraNivel" type="Camera2D" parent="."]
 script = ExtResource( 10 )
 
@@ -45,7 +45,56 @@ script = ExtResource( 10 )
 
 [node name="TweenCamara" type="Tween" parent="."]
 
-[node name="EstacionRecarga" parent="." instance=ExtResource( 11 )]
-position = Vector2( 476, -1 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 256, 256 )
+
+[node name="Fondito" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito9" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito10" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito11" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito12" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito13" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito14" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+
+[node name="Fondito15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
