@@ -4,9 +4,12 @@ extends RayCast2D
 export var cast_speed := 7000.0
 export var max_length := 1400.0
 export var growth_time := 0.1
-export var radio_danio := 6
+export var radio_danio := 6.0
+export var energia:float = 4.0
+export var radio_desgaste:float = -1.0
 
 var is_casting := false setget set_is_casting
+var energia_original:float
 
 onready var fill := $FillLine2D
 onready var tween := $Tween
@@ -17,16 +20,14 @@ onready var laser_sfx: AudioStreamPlayer2D = $LaserSFX
 
 onready var line_width: float = fill.width
 
-
 func _ready() -> void:
+	energia_original = energia
 	set_physics_process(false)
 	fill.points[1] = Vector2.ZERO
-
 
 func _physics_process(delta: float) -> void:
 	cast_to = (cast_to + Vector2.RIGHT * cast_speed * delta).limit_length(max_length)
 	cast_beam(delta)
-
 
 func set_is_casting(cast: bool) -> void:
 	is_casting = cast
@@ -47,6 +48,12 @@ func set_is_casting(cast: bool) -> void:
 	casting_particles.emitting = is_casting
 
 func cast_beam(delta: float) -> void:
+	if energia <= 0.0:
+		set_is_casting(false)
+		return
+	
+	controlar_energia(radio_desgaste * delta)
+
 	var cast_point := cast_to
 
 	force_raycast_update()
@@ -63,16 +70,20 @@ func cast_beam(delta: float) -> void:
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
 
-
 func appear() -> void:
 	if tween.is_active():
 		tween.stop_all()
 	tween.interpolate_property(fill, "width", 0, line_width, growth_time * 2)
 	tween.start()
 
-
 func disappear() -> void:
 	if tween.is_active():
 		tween.stop_all()
 	tween.interpolate_property(fill, "width", fill.width, 0, growth_time)
 	tween.start()
+
+func controlar_energia(consumo:float):
+	energia += consumo
+	if energia > energia_original:
+		energia = energia_original
+	print("Energia Laser: ", energia)
