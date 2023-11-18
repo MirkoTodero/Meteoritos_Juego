@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/recibir_daño.wav-9e032298ee1e30ec7187290b6873849b.sample"
+path="res://.import/recibir_daño.wav-9e1a858df32e4157fb5d3048165b038a.sample"
 
 [deps]
 
-source_file="res://Juego/Jugador/recibir_daño.wav"
-dest_files=[ "res://.import/recibir_daño.wav-9e032298ee1e30ec7187290b6873849b.sample" ]
+source_file="res://Juego/Naves/Jugador/recibir_daño.wav"
+dest_files=[ "res://.import/recibir_daño.wav-9e1a858df32e4157fb5d3048165b038a.sample" ]
 
 [params]
 

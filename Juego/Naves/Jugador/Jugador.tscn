@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Juego/Naves/Jugador/Motor/MotorSFX.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Naves/Jugador/AnimacionesPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Naves/Jugador/CamaraJugador.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Naves/NaveBase.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Proyectiles/Laser/LaserBeam2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/Naves/Jugador/Escudo/Escudo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Naves/Jugador/Estela/InicioEstelaJugador.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Juego/Naves/Jugador/jugador_nave.png" type="Texture" id=8]
+[ext_resource path="res://Juego/Naves/Jugador/Jugador.gd" type="Script" id=9]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 46.0109
+
+[node name="Jugador" instance=ExtResource( 4 )]
+z_index = 50
+z_as_relative = false
+collision_layer = 1
+collision_mask = 22
+physics_material_override = SubResource( 1 )
+gravity_scale = 0.0
+contacts_reported = 2
+contact_monitor = true
+can_sleep = false
+linear_damp = 1.5
+angular_damp = 4.5
+script = ExtResource( 9 )
+potencia_motor = 18
+potencia_rotacion = 260
+estela_maxima = 150
+
+[node name="Sprite" parent="." index="0"]
+rotation = 1.5708
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 2 )
+
+[node name="PositionDerecha" parent="Canion" index="0"]
+position = Vector2( 0, -37 )
+
+[node name="PosicionIzquierda" parent="Canion" index="1"]
+position = Vector2( 0, 35 )
+
+[node name="Escudo" parent="." index="4" instance=ExtResource( 6 )]
+
+[node name="InicioEstelaJugador" parent="." index="5" instance=ExtResource( 7 )]
+position = Vector2( -18, -1 )
+
+[node name="MotorSFX" parent="." index="6" instance=ExtResource( 1 )]
+
+[node name="AnimationPlayer" parent="." index="7" instance=ExtResource( 2 )]
+
+[node name="CamaraJugador" parent="." index="8" instance=ExtResource( 3 )]
+
+[node name="LaserBeam2D" parent="." index="9" instance=ExtResource( 5 )]
+position = Vector2( 13, 0 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="Canion"]

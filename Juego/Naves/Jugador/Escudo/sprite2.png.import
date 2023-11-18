@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite1.png-2f900e24dc790d687c82b514812d2844.stex"
+path="res://.import/sprite2.png-a108f1927d0671139a94f234b4eb31f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Jugador/Escudo/sprite1.png"
-dest_files=[ "res://.import/sprite1.png-2f900e24dc790d687c82b514812d2844.stex" ]
+source_file="res://Juego/Naves/Jugador/Escudo/sprite2.png"
+dest_files=[ "res://.import/sprite2.png-a108f1927d0671139a94f234b4eb31f4.stex" ]
 
 [params]
 

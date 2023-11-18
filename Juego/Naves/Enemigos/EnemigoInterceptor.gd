@@ -1,0 +1,3 @@
+extends EnemigoBase
+
+class_name EnemigoInterceptor

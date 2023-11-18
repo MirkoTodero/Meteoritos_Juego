@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sparkle.png-b7d7e92c13f61f9b0306473cf112e911.stex"
+path="res://.import/nave_enemiga.png-070233e0d47205c10d371619efe0819c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Jugador/Explosion/sparkle.png"
-dest_files=[ "res://.import/sparkle.png-b7d7e92c13f61f9b0306473cf112e911.stex" ]
+source_file="res://Juego/Naves/Enemigos/nave_enemiga.png"
+dest_files=[ "res://.import/nave_enemiga.png-070233e0d47205c10d371619efe0819c.stex" ]
 
 [params]
 

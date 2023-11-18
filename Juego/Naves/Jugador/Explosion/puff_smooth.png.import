@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/puff_smooth.png-6774bd79bf2a53e5a313c14a83901fb6.stex"
+path="res://.import/puff_smooth.png-56deb654b89666e67971893b9b39c579.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Jugador/Explosion/puff_smooth.png"
-dest_files=[ "res://.import/puff_smooth.png-6774bd79bf2a53e5a313c14a83901fb6.stex" ]
+source_file="res://Juego/Naves/Jugador/Explosion/puff_smooth.png"
+dest_files=[ "res://.import/puff_smooth.png-56deb654b89666e67971893b9b39c579.stex" ]
 
 [params]
 
