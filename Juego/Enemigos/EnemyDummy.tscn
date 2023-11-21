@@ -2,7 +2,7 @@
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Enemigos/EnemyDummy.gd" type="Script" id=2]
-[ext_resource path="res://Juego/Enemigos/AreaColision.gd" type="Script" id=3]
+[ext_resource path="res://Juego/Estacion/AreaColision.gd" type="Script" id=3]
 [ext_resource path="res://Juego/Proyectiles/Canion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Proyectiles/ProyectilEnemigos.tscn" type="PackedScene" id=5]
 

@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Naves/Enemigos/EnemigoInterceptor.gd"
 }, {
+"base": "EnemigoBase",
+"class": "EnemigoOrbital",
+"language": "GDScript",
+"path": "res://Juego/Naves/Enemigos/EnemigoOrbital.gd"
+}, {
 "base": "Area2D",
 "class": "Escudo",
 "language": "GDScript",
@@ -100,6 +105,7 @@ _global_script_class_icons={
 "Canion": "",
 "EnemigoBase": "",
 "EnemigoInterceptor": "",
+"EnemigoOrbital": "",
 "Escudo": "",
 "EstacionRecarga": "",
 "Estela": "",
@@ -122,6 +128,7 @@ config/icon="res://icono_juego.png"
 [autoload]
 
 Eventos="*res://Autoloads/Eventos.gd"
+DatosJuego="*res://DatosJuego.gd"
 
 [debug]
 
@@ -218,6 +225,7 @@ recargar_escudo={
 2d_physics/layer_3="enemigos"
 2d_physics/layer_4="proyectil_jugador"
 2d_physics/layer_5="proyectil_enemigos"
+2d_physics/layer_6="base_enemiga"
 
 [physics]
 

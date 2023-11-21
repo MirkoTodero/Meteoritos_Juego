@@ -29,6 +29,7 @@ can_sleep = false
 linear_damp = 1.5
 angular_damp = 4.5
 script = ExtResource( 9 )
+num_explosiones = 3.0
 potencia_motor = 18
 potencia_rotacion = 260
 estela_maxima = 150

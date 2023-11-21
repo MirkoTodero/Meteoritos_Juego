@@ -5,6 +5,7 @@ class_name NaveBase
 enum ESTADO{VIVO, MUERTO, SPAWN, INVENCIBLE}
 
 export var hitpoints:float = 20
+export var num_explosiones:float = 0
 
 var estado_actual:int = ESTADO.SPAWN
 
@@ -28,7 +29,7 @@ func controlador_estados(nuevo_estado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(false)
-			Eventos.emit_signal("nave_destruida", self, global_position, 3)
+			Eventos.emit_signal("nave_destruida", self, global_position, num_explosiones)
 			queue_free()
 		_:
 			printerr("Error de estado")
@@ -44,7 +45,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func recibir_danio(danio: float) -> void:
 	hitpoints -= danio
 	if hitpoints <= 0.0:
-		queue_free()
+		destruir()
 	impacto_recibido.play()
 
 func _on_body_entered(body: Node) -> void:
