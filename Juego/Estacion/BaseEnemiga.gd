@@ -6,12 +6,14 @@ export var hitpoints:float = 30.0
 export var orbital:PackedScene = null
 export var numero_orbitales:int = 10.0
 export var intervalo_spawn:float = 0.8
+export(Array, PackedScene) var rutas
 
 onready var impacto_sfx:AudioStreamPlayer2D = $Impactos
 onready var timer_spawner:Timer = $TimerSpawnerEnemigos
 
 var esta_destruido:bool = false
 var posicion_spawn:Vector2 = Vector2.ZERO
+var ruta_seleccionada:Path2D
 
 func _process(delta:float) -> void:
 	var jugador_objetivo:Jugador = DatosJuego.get_jugador_actual()
@@ -24,6 +26,13 @@ func _process(delta:float) -> void:
 func _ready() -> void:
 	timer_spawner.wait_time = intervalo_spawn
 	$AnimationPlayer.play(elegir_animacion_aleatoria())
+	seleccionar_ruta()
+
+func seleccionar_ruta() -> void:
+	randomize()
+	var indice_ruta:int = randi() % rutas.size() - 1
+	ruta_seleccionada = rutas[indice_ruta].instance()
+	add_child(ruta_seleccionada)
 
 func elegir_animacion_aleatoria() -> String:
 	randomize()
@@ -66,13 +75,13 @@ func _on_VisibilityNotifier2D_screen_entered() -> void:
 
 func spawnear_orbital() -> void:
 	numero_orbitales -= 1
-	$RutaEnemigo.global_position = global_position
+	ruta_seleccionada.global_position = global_position
 	
 	var new_orbital:EnemigoOrbital = orbital.instance()
 	new_orbital.crear(
 		global_position + posicion_spawn,
 		self,
-		$RutaEnemigo
+		ruta_seleccionada
 	)
 	Eventos.emit_signal("spawn_orbital", new_orbital)
 
@@ -86,17 +95,17 @@ func deteccion_cuadrante() -> Vector2:
 	var angulo_jugador:float = rad2deg(dir_jugador.angle())
 	
 	if abs(angulo_jugador) <= 45.0:
-		$RutaEnemigo.rotation_degrees = 180.0
+		ruta_seleccionada.rotation_degrees = 180.0
 		return $PosicionesSpawn/Este.position
 	elif abs(angulo_jugador) > 135.0 and abs(angulo_jugador) <= 180.0:
-		$RutaEnemigo.rotation_degrees = 0.0
+		ruta_seleccionada.rotation_degrees = 0.0
 		return $PosicionesSpawn/Oeste.position
 	elif abs(angulo_jugador) > 45.0 and abs(angulo_jugador) <= 135.0:
 		if sign(angulo_jugador) > 0:
-			$RutaEnemigo.rotation_degrees = 270.0
+			ruta_seleccionada.rotation_degrees = 270.0
 			return $PosicionesSpawn/Sur.position
 		else:
-			$RutaEnemigo.rotation_degrees = 90.0
+			ruta_seleccionada.rotation_degrees = 90.0
 			return $PosicionesSpawn/Norte.position
 	
 	return $PosicionesSpawn/Norte.position
