@@ -34,7 +34,7 @@ func controlador_estados_ia(nuevo_estado: int) -> void:
 	
 	estado_actual = nuevo_estado
 
-func _on_AreaDisparo_body_entered(body: Node) -> void:
+func _on_AreaDisparo_body_entered(_body: Node) -> void:
 	controlador_estados_ia(ESTADO_IA.ATACANDOP)
 
 func _on_AreaDisparo_body_exited(body: Node) -> void:

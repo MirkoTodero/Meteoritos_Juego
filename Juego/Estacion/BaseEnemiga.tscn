@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Juego/Estacion/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estacion/parte_nave_enemiga1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Juego/Estacion/AreaColision.gd" type="Script" id=7]
 [ext_resource path="res://Juego/Naves/Enemigos/EnemigoOrbital.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Estacion/PosicionesSpawn.gd" type="Script" id=9]
+[ext_resource path="res://Juego/Estacion/RutaEnemigo.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 38.0
@@ -104,9 +105,16 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -178, -461, 0, 0, 0, 0, 0, -497, 0, 0, 0, 0, 176, -456, 0, 0, 0, 0, 322, -384, 0, 0, 0, 0, 434, -264, 0, 0, 0, 0, 472, -141, 0, 0, 0, 0, 502, 1, 0, 0, 0, 0, 460, 207, 0, 0, 0, 0, 377, 330, 0, 0, 0, 0, 222, 465, 0, 0, 0, 0, 0, 510, 0, 0, 0, 0, -195, 461, 0, 0, 0, 0, -365, 357, 0, 0, 0, 0, -454, 224, 0, 0, 0, 0, -502, -1, 0, 0, 0, 0, -473, -164, 0, 0, 0, 0, -396, -296, 0, 0, 0, 0, -310, -397, 0, 0, 0, 0, -178, -461 )
+}
+
 [node name="BaseEnemiga" type="Node2D"]
 script = ExtResource( 6 )
 orbital = ExtResource( 8 )
+numero_orbitales = 5
+intervalo_spawn = 2.0
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -160,6 +168,7 @@ shape = SubResource( 6 )
 
 [node name="AreaAtraccion" parent="." instance=ExtResource( 1 )]
 modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -2, -1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 1 )
@@ -185,5 +194,12 @@ position = Vector2( -500, 0 )
 [node name="Este" type="Position2D" parent="PosicionesSpawn"]
 position = Vector2( 500, 0 )
 
+[node name="RutaEnemigo" type="Path2D" parent="."]
+curve = SubResource( 7 )
+script = ExtResource( 10 )
+
+[node name="TimerSpawnerEnemigos" type="Timer" parent="."]
+
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]

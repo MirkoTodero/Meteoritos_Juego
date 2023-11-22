@@ -13,7 +13,7 @@
 [ext_resource path="res://Juego/Estacion/EstacionRecarga.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Juego/Naves/Jugador/Jugador.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Estacion/BaseEnemiga.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Juego/Naves/Enemigos/EnemigoOrbital.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Juego/Estacion/Rele/ReledeMasa.tscn" type="PackedScene" id=14]
 
 [node name="NivelTest" type="Node"]
 script = ExtResource( 2 )
@@ -22,6 +22,7 @@ meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 5 )
 enemigo_interceptor = ExtResource( 1 )
+rele_de_masa = ExtResource( 14 )
 
 [node name="TriggersLluviaMeteorito" type="Node" parent="."]
 
@@ -42,6 +43,11 @@ position = Vector2( 2065, 671 )
 position = Vector2( 1235, 906 )
 tipo_peligro = "Enemigo"
 numero_peligros = 2
+
+[node name="ContenedorBasesEnemigas" type="Node" parent="."]
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
+position = Vector2( -812, 296 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -107,11 +113,5 @@ texture = ExtResource( 9 )
 
 [node name="Jugador" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1070, 53 )
-
-[node name="BaseEnemiga" parent="." instance=ExtResource( 13 )]
-position = Vector2( -812, 296 )
-
-[node name="EnemigoOrbital" parent="." instance=ExtResource( 14 )]
-position = Vector2( 189, -135 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

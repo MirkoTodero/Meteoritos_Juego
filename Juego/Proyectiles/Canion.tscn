@@ -8,7 +8,8 @@
 script = ExtResource( 1 )
 proyectil = ExtResource( 2 )
 cadencia_disparo = 0.25
-velocidad_proyectil = 1200
+velocidad_proyectil = 1700
+danio_proyectil = 2
 
 [node name="PositionDerecha" type="Position2D" parent="."]
 

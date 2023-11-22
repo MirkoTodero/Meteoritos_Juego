@@ -80,3 +80,9 @@ func esta_input_activado() -> bool:
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "spawn":
 		controlador_estados(ESTADO.VIVO)
+
+func desactivar_controles() -> void:
+	controlador_estados(ESTADO.SPAWN)
+	empuje = Vector2.ZERO
+	motor_sfx.sonido_off()
+	laser.set_is_casting(false)
