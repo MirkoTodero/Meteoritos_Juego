@@ -15,10 +15,16 @@ func _unhandled_input(event:InputEvent) -> void:
 		return
 	
 	controlar_energia()
+	
 	if event.is_action("recargar_escudo"):
 		nave_player.get_escudo().controlar_energia(radio_energia_entregada)
 	elif event.is_action("recargar_laser"):
 		nave_player.get_laser().controlar_energia(radio_energia_entregada)
+	
+	if event.is_action_released("recargar_laser"):
+		Eventos.emit_signal("ocultar_energia_laser")
+	if event.is_action_released("recargar_escudo"):
+		Eventos.emit_signal("ocultar_energia_escudo")
 
 func _on_AreaEstacion_body_entered(body:Node) -> void:
 	if body.has_method("destruir"):
@@ -28,10 +34,12 @@ func _on_AreaRecarga_body_entered(body:Node) -> void:
 	if body is Jugador:
 		player_en_zona = true
 		nave_player = body
+		Eventos.emit_signal("detecto_zona_recarga", true)
 
 func _on_AreaRecarga_body_exited(body:Node) -> void:
 	player_en_zona = false
 	carga_sfx.stop()
+	Eventos.emit_signal("detecto_zona_recarga", false)
 
 func puede_recargar(event:InputEvent) -> bool:
 	var hay_input = event.is_action("recargar_escudo") or event.is_action("recargar_laser")
