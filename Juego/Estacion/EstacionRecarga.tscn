@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Juego/Estacion/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estacion/estacion_recarga.png" type="Texture" id=2]
 [ext_resource path="res://Juego/Estacion/EstacionRecarga.gd" type="Script" id=3]
 [ext_resource path="res://Juego/Estacion/vacio.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Juego/Estacion/carga.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Juego/Meteoritos/Kenney Font.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 71.0
@@ -178,7 +179,19 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="EstacionRecarga" type="Node2D"]
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 4
+outline_color = Color( 0.054902, 0.00392157, 0.00392157, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.192157, 0.862745, 0.0941176, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.929412, 0.141176, 0.141176, 1 )
+
+[node name="EstacionRecarga" type="Node2D" groups=["minimap"]]
 script = ExtResource( 3 )
 
 [node name="AreaEstacion" type="Area2D" parent="."]
@@ -207,6 +220,16 @@ stream = ExtResource( 5 )
 
 [node name="VacioSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="BarraEnegia" type="ProgressBar" parent="."]
+margin_left = -121.0
+margin_top = -152.0
+margin_right = 110.0
+margin_bottom = -129.0
+custom_fonts/font = SubResource( 6 )
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
+value = 50.0
 
 [connection signal="body_entered" from="AreaEstacion" to="." method="_on_AreaEstacion_body_entered"]
 [connection signal="body_entered" from="AreaRecarga" to="." method="_on_AreaRecarga_body_entered"]
