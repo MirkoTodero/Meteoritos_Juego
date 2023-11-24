@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estacion/BaseEnemiga.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Estacion/EstacionRecarga.tscn" type="PackedScene" id=4]
+
+[node name="Nivel1" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel2.tscn"
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 4 )]
+position = Vector2( 5079, 2972 )
+
+[node name="SectorDePeligro" parent="TriggerInterceptor" index="0" instance=ExtResource( 3 )]
+position = Vector2( 3832, 2334 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
+
+[node name="SectorDePeligro2" parent="TriggerInterceptor" index="1" instance=ExtResource( 3 )]
+position = Vector2( 5128, 1513 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
+
+[node name="SectorDePeligro3" parent="TriggerInterceptor" index="2" instance=ExtResource( 3 )]
+position = Vector2( 6986, 699 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
+
+[node name="SectorDePeligro4" parent="TriggerInterceptor" index="3" instance=ExtResource( 3 )]
+position = Vector2( 8567, 2009 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
+
+[node name="SectorDePeligro5" parent="TriggerInterceptor" index="4" instance=ExtResource( 3 )]
+position = Vector2( 6081, -814 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 2 )]
+position = Vector2( 8740, 611 )
+numero_orbitales = 6
+intervalo_spawn = 1.0
+
+[node name="Jugador" parent="." index="11"]
+position = Vector2( 1758, 832 )

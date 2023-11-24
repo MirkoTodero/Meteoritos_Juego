@@ -4,7 +4,7 @@ class_name EnemigoInterceptor
 
 enum ESTADO_IA {IDLE, ATACANDOQ, ATACANDOP, PERSECUCION}
 
-var estado_ia_actual:int = ESTADO_IA.IDLE
+var estado_ia_actual:int = ESTADO_IA.ATACANDOP
 var potencia_actual:float = 0.0
 
 export var potencia_max:float = 750.0
