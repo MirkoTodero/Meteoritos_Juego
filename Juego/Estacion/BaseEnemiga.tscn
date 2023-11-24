@@ -125,6 +125,7 @@ border_blend = true
 
 [node name="BaseEnemiga" type="Node2D" groups=["minimap"]]
 script = ExtResource( 6 )
+hitpoints = 40.0
 orbital = ExtResource( 8 )
 numero_orbitales = 5
 intervalo_spawn = 2.0
