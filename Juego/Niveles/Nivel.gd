@@ -21,7 +21,7 @@ export var sector_meteoritos:PackedScene = null
 export var tiempo_transicion_camara:int = 2.0
 export var enemigo_interceptor:PackedScene = null
 export var rele_de_masa:PackedScene = null
-export var tiempo_limite:int = 22
+export var tiempo_limite:int = 120
 
 func _ready() -> void:
 	Eventos.emit_signal("nivel_iniciado")

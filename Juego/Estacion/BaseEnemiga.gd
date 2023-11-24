@@ -10,6 +10,7 @@ export(Array, PackedScene) var rutas
 
 onready var impacto_sfx:AudioStreamPlayer2D = $Impactos
 onready var timer_spawner:Timer = $TimerSpawnerEnemigos
+onready var barra_salud:ProgressBar = $BarraSalud
 
 var esta_destruido:bool = false
 var posicion_spawn:Vector2 = Vector2.ZERO
@@ -27,6 +28,7 @@ func _ready() -> void:
 	timer_spawner.wait_time = intervalo_spawn
 	$AnimationPlayer.play(elegir_animacion_aleatoria())
 	seleccionar_ruta()
+	barra_salud.set_valores(hitpoints)
 
 func seleccionar_ruta() -> void:
 	randomize()
@@ -48,7 +50,8 @@ func recibir_danio(danio:float) -> void:
 	if hitpoints < 0 and not esta_destruido:
 		esta_destruido = true
 		destruir()
-
+	
+	barra_salud.set_hitpoints_actual(hitpoints)
 	impacto_sfx.play()
 
 func _on_AreaColision_body_entered(body:Node) -> void:
@@ -64,8 +67,9 @@ func destruir() -> void:
 		$Sprites/Sprite6.global_position,
 		
 	]
-	queue_free()
 	Eventos.emit_signal("base_destruida", self, posicion_partes)
+	Eventos.emit_signal("minimapa_objeto_destruido", self)
+	queue_free()
 
 func _on_VisibilityNotifier2D_screen_entered() -> void:
 	$VisibilityNotifier2D.queue_free()
